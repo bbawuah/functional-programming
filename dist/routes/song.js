@@ -10,4 +10,5 @@ exports.router = express_1.default.Router({
     strict: true
 });
 exports.router.get('/songs', controller_1.allSongs);
-exports.router.get('/song', controller_1.getSong);
+exports.router.get('/song:id', controller_1.getSong);
+exports.router.patch('/song:id', controller_1.updateSong);
