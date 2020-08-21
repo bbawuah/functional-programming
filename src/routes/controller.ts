@@ -10,7 +10,7 @@ interface Song {
   number: string
   title: string
   twi: string
-  english: string
+  english?: string
   favorite: boolean
   __v: number
 }
@@ -44,6 +44,18 @@ export const getSong = async (req: Request, res: Response): Promise<void> => {
   } catch (e) {
     res.status(500).send(e)
   }
+}
+
+export const getFavoriteSong = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const hymnNumber = req.body.list
+  console.log(hymnNumber)
+  const songs = await Song.find({
+    number: { $in: hymnNumber }
+  })
+  res.send(songs)
 }
 
 export const updateSong = async (

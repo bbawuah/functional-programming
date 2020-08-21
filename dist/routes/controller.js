@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateSong = exports.getSong = exports.allSongs = void 0;
+exports.updateSong = exports.getFavoriteSong = exports.getSong = exports.allSongs = void 0;
 var mongoose_1 = require("../db/mongoose");
 exports.allSongs = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var match, song, e_1;
@@ -86,6 +86,23 @@ exports.getSong = function (req, res) { return __awaiter(void 0, void 0, void 0,
                 res.status(500).send(e_2);
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getFavoriteSong = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var hymnNumber, songs;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                hymnNumber = req.body.list;
+                console.log(hymnNumber);
+                return [4 /*yield*/, mongoose_1.Song.find({
+                        number: { $in: hymnNumber }
+                    })];
+            case 1:
+                songs = _a.sent();
+                res.send(songs);
+                return [2 /*return*/];
         }
     });
 }); };

@@ -1,5 +1,5 @@
 import express from 'express'
-import { allSongs, getSong, updateSong } from './controller'
+import { allSongs, getSong, updateSong, getFavoriteSong } from './controller'
 
 export const router = express.Router({
   strict: true
@@ -7,6 +7,8 @@ export const router = express.Router({
 
 router.get('/songs', allSongs)
 
-router.get('/song:id', getSong)
+router.post('/song', getSong)
+
+router.post('/favorites', getFavoriteSong)
 
 router.patch('/song:id', updateSong)
