@@ -12,4 +12,5 @@ exports.router = express_1.default.Router({
 exports.router.get('/songs', controller_1.allSongs);
 exports.router.post('/song', controller_1.getSong);
 exports.router.post('/favorites', controller_1.getFavoriteSong);
+exports.router.get('/search:term', controller_1.getSearchQuery);
 exports.router.patch('/song:id', controller_1.updateSong);

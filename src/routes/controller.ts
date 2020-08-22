@@ -81,3 +81,25 @@ export const updateSong = async (
     res.status(500).send(e)
   }
 }
+
+export const getSearchQuery = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const title = await Song.find({
+    title: { $regex: new RegExp(req.params.term.replace(':', '')) }
+  })
+
+  const number = await Song.find({
+    number: { $regex: new RegExp(req.params.term.replace(':', '')) }
+  })
+
+  const results = [...title, ...number]
+
+  if (!results) {
+    res.send('No hymnal found')
+    return
+  }
+
+  res.send(results)
+}
