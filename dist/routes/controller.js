@@ -102,7 +102,6 @@ exports.getFavoriteSong = function (req, res) { return __awaiter(void 0, void 0,
         switch (_a.label) {
             case 0:
                 hymnNumber = req.body.list;
-                console.log(hymnNumber);
                 return [4 /*yield*/, mongoose_1.Song.find({
                         number: { $in: hymnNumber }
                     })];
@@ -154,7 +153,7 @@ exports.getSearchQuery = function (req, res) { return __awaiter(void 0, void 0, 
                     })];
             case 2:
                 number = _a.sent();
-                results = __spreadArrays(title, number);
+                results = title.length == 0 ? __spreadArrays(number) : __spreadArrays(title);
                 if (!results) {
                     res.send('No hymnal found');
                     return [2 /*return*/];

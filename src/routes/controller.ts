@@ -51,7 +51,6 @@ export const getFavoriteSong = async (
   res: Response
 ): Promise<void> => {
   const hymnNumber = req.body.list
-  console.log(hymnNumber)
   const songs = await Song.find({
     number: { $in: hymnNumber }
   })
@@ -94,7 +93,7 @@ export const getSearchQuery = async (
     number: { $regex: new RegExp(req.params.term.replace(':', '')) }
   })
 
-  const results = [...title, ...number]
+  const results = title.length == 0 ? [...number] : [...title]
 
   if (!results) {
     res.send('No hymnal found')
