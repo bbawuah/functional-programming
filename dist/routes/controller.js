@@ -140,16 +140,18 @@ exports.updateSong = function (req, res) { return __awaiter(void 0, void 0, void
     });
 }); };
 exports.getSearchQuery = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var title, number, results;
+    var query, title, number, results;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, mongoose_1.Song.find({
-                    title: { $regex: new RegExp(req.params.term.replace(':', '')) }
-                })];
+            case 0:
+                query = req.params.term.replace(':', '');
+                return [4 /*yield*/, mongoose_1.Song.find({
+                        title: { $regex: new RegExp("" + query, 'i') }
+                    })];
             case 1:
                 title = _a.sent();
                 return [4 /*yield*/, mongoose_1.Song.find({
-                        number: { $regex: new RegExp(req.params.term.replace(':', '')) }
+                        number: { $regex: new RegExp("" + query, 'i') }
                     })];
             case 2:
                 number = _a.sent();
