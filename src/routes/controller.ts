@@ -86,11 +86,11 @@ export const getSearchQuery = async (
   res: Response
 ): Promise<void> => {
   const title = await Song.find({
-    title: { $regex: new RegExp(req.params.term.replace(':', '')) }
+    title: { $regex: new RegExp(req.params.term.replace(':', ''), 'i') }
   })
 
   const number = await Song.find({
-    number: { $regex: new RegExp(req.params.term.replace(':', '')) }
+    number: { $regex: new RegExp(req.params.term.replace(':', ''), 'i') }
   })
 
   const results = title.length == 0 ? [...number] : [...title]
