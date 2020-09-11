@@ -1,13 +1,26 @@
 import mongoose from 'mongoose'
+import Grid from 'gridfs-stream'
+import { Request, Response } from 'express'
 
-mongoose.connect(`${process.env.MONGODB_URL}`, { useNewUrlParser: true })
-
-export const SongSchema = new mongoose.Schema({
-  number: { type: String, required: true },
-  title: { type: String, required: true },
-  twi: { type: String, required: true },
-  english: { type: String, required: false },
-  favorite: { type: Boolean, required: true }
+const connection = mongoose.createConnection(`${process.env.MONGODB_URL}`, {
+  useNewUrlParser: true
+})
+connection.once('open', () => {
+  console.log('connected')
 })
 
-export const Song = mongoose.model('Song', SongSchema)
+export const getSound = async (req: Request, res: Response): Promise<void> => {
+  const gfs = Grid(connection.db, mongoose.mongo)
+
+  const readstream = gfs.createReadStream({
+    filename: `${req.params.id}.mp3`
+  })
+
+  readstream.on('error', function (error) {
+    console.log(error)
+    res.sendStatus(500)
+  })
+
+  res.type('audio/mpeg')
+  readstream.pipe(res)
+}
