@@ -18,7 +18,7 @@ export const getSound = async (req: Request, res: Response): Promise<void> => {
 
   readstream.on('error', function (error) {
     console.log(error)
-    res.status(500).send(error)
+    return error
   })
 
   res.type('audio/mpeg')
