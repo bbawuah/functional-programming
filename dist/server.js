@@ -7,13 +7,12 @@ var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 var express_1 = __importDefault(require("express"));
 var constants_1 = require("./config/constants");
-var routes_1 = require("./routes");
+// import { songRouter } from './routes'
 var body_parser_1 = __importDefault(require("body-parser"));
 var app = express_1.default();
 app.use(express_1.default.json());
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
-app.use(routes_1.songRouter);
 app.listen(constants_1.PORT, function () {
     console.log("Server is listening on port " + constants_1.PORT);
 });

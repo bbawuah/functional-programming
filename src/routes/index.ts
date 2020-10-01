@@ -1,3 +1,3 @@
-import { router as songRouter } from './song'
+import { router } from './route'
 
-export { songRouter }
+export { router }
