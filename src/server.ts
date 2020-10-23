@@ -98,24 +98,29 @@ interface DataType {
   gelovenInLevenBuitenPlaneet: string
 }
 
-const arrayMetArrays = data.map((data: DataType) => {
+type dirtyDataArrayType = [string, string][]
+type dirtyDataType = [string, string]
+type formattedDataArayType = [string, number][]
+
+const arrayOfArrays = data.map((data: DataType) => {
   return Object.entries(data)
 })
 
-const arrayMetNummers = arrayMetArrays.map((arrayInArray) => {
-  const gefilterdeArray = arrayInArray.filter((data) => {
-    const num = parseInt(data[1])
-    if (!isNaN(num)) {
-      return data
-    }
-  })
+const arrayWithNumbers = arrayOfArrays.map(
+  (arrayInArray: dirtyDataArrayType) => {
+    const filteredArray = arrayInArray.filter((data) => {
+      const num = parseInt(data[1])
+      if (!isNaN(num)) {
+        return data
+      }
+    })
 
-  const convertedArray = gefilterdeArray.map((data: [string, string]) => [
-    data[0],
-    parseInt(data[1])
-  ])
+    const convertedArray: formattedDataArayType = filteredArray.map(
+      (data: dirtyDataType) => [data[0], parseInt(data[1])]
+    )
 
-  return convertedArray
-})
+    return convertedArray
+  }
+)
 
-console.log(arrayMetNummers)
+console.log(arrayWithNumbers)
