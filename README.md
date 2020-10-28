@@ -28,3 +28,21 @@ Het is interessant om in kaart te brengen welke steden gebruik maken van de nieu
 
 Het is interessant om in kaart te brengen welke betalingsopties zijn verminderd of misschien zelfd verdwenen? Wordt het steeds lastiger om contant te betalen voor het parkeren? Of verdwijnt het betalen met creditcard juist?
 
+## Variabelen
+
+Om deze vragen te beantwoorden zal ik de [Open Data Parkeren: VERKOOPPUNT](https://opendata.rdw.nl/d/fk68-nf2y/visualization) en de [Open Data Parkeren: BETAALMETHODE VERKOOPPUNT](https://opendata.rdw.nl/d/j96a-7nhx/visualization) gebruiken.
+
+#### Open Data Parkeren: VERKOOPPUNT
+
+Deze dataset heeft de volgende relevante variabelen
+* StartDateSellingPoint (Datum vanaf wanneer een verkooppunt actief is)
+* EndDateSellingPoint (Datum vanaf wanneer een verkooppunt niet meer actief is)
+* SellingPointDesc (Omschrijving van een verkooppunt)
+
+#### Open Data Parkeren: BETAALMETHODE VERKOOPPUNT
+
+Deze dataset heeft de volgende relevante variabelen
+* PaymentMethod (Betaal methode die gebruikt kan worden voor het betalen van parkeren)
+* StartDatePaymentMethod  (Begindatum van een periode waarin de betalingsmogelijkheid geldig is)
+* EndDatePaymentMethod (Einddatum van een periode waarin de betalingsmogelijkheid geldig is)
+* SellingPointNumber (Identificatie van een verkooppunt)
