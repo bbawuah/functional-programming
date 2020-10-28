@@ -46,3 +46,8 @@ Deze dataset heeft de volgende relevante variabelen
 * StartDatePaymentMethod  (Begindatum van een periode waarin de betalingsmogelijkheid geldig is)
 * EndDatePaymentMethod (Einddatum van een periode waarin de betalingsmogelijkheid geldig is)
 * SellingPointNumber (Identificatie van een verkooppunt)
+
+## Verwachtingen
+
+Mijn hypothese is dat er stijging te zien zal zijn in het digitaal parkeren en een daling in het cash betalen. 
+
