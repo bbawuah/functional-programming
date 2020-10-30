@@ -1,18 +1,17 @@
 // Importeer React
-import React from "react";
+import React from 'react'
 // Importeer ReactDOM
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom'
 // Importeer normalize.css
-import "normalize.css/normalize.css";
 // Importeer custom stylesheet
-import "./styles/styles.scss";
+import './styles/styles.scss'
 // Importeer Route, BrowserRouter en Link
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 // Te renderen componenten op pagina's
-import PageOne from "./components/pages/PageOne";
-import PageTwo from "./components/pages/PageTwo";
-import PageThree from "./components/pages/PageThree";
+import PageOne from './components/pages/PageOne'
+import PageTwo from './components/pages/PageTwo'
+import PageThree from './components/pages/PageThree'
 
 /*
  * Root component die
@@ -29,6 +28,6 @@ const App = () => (
       </Switch>
     </div>
   </Router>
-);
+)
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'))
