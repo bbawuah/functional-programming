@@ -41,6 +41,16 @@ const PageOne = () => {
 
       console.log(getPaymentMethods(json))
 
+      const paymentMethods = Object.values(PaymentMethods)
+
+      const formattedArray = paymentMethods.map((payment) =>
+        json.filter(
+          (item: AreaType) => item.paymentmethod.toUpperCase() === payment
+        )
+      )
+
+      console.log(formattedArray)
+
       setData(data.concat(json))
       // console.log(json)
     })()
