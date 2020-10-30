@@ -54,13 +54,19 @@ Mijn hypothese is dat er stijging te zien zal zijn in het digitaal parkeren en e
 # Installation
 
 Clone this repo
-`git clone https://github.com/bbawuah/functional-programming.git`
+```
+git clone https://github.com/bbawuah/functional-programming.git
+```
 
 Then, navigate to this folder and run:
-`npm install`
+```
+npm install
+```
 
 Run dev server:
-`npm run dev`
+```
+npm run dev
+```
 
 Dependencies
 ```json
