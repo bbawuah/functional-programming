@@ -1,5 +1,5 @@
-import React from "react";
-import Layout from "../layout/Layout";
+import React from 'react'
+import Layout from '../layout/Layout'
 
 const PageTwo = () => (
   <div>
@@ -7,6 +7,6 @@ const PageTwo = () => (
       <h1>Page two</h1>
     </Layout>
   </div>
-);
+)
 
-export default PageTwo;
+export default PageTwo

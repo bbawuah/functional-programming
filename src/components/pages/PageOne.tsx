@@ -1,62 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { Hello } from "../hello";
-import Layout from "../layout/Layout";
-import {
-  DataType,
-  dirtyDataArrayType,
-  dirtyDataType,
-  formattedDataArayType,
-} from "../../types/DataTypes";
-import data from "../../data/Survey_Information_Design_clean-parsed.json";
+import React, { useEffect, useState } from 'react'
+import { AreaType, PaymentMethods } from '../../types/DataTypes'
+import { Hello } from '../hello'
+import Layout from '../layout/Layout'
+// import {
+//   DataType,
+//   dirtyDataArrayType,
+//   dirtyDataType,
+//   formattedDataArayType
+// } from '../../types/DataTypes'
+// import jsonData from '../../data/Survey_Information_Design_clean-parsed.json'
 
 const PageOne = () => {
-  const [data, setData] = useState<any[]>([]);
-  const arrayOfArrays = data.map((data: DataType) => {
-    return Object.entries(data);
-  });
+  const [data, setData] = useState<any[]>([])
+  // const arrayOfArrays = data.map((data: DataType) => {
+  //   return Object.entries(data)
+  // })
 
-  let foo: string | number = "stirng";
-  foo = 4;
+  // const arrayWithNumbers = arrayOfArrays.map(
+  //   (arrayInArray: dirtyDataArrayType) => {
+  //     const filteredArray = arrayInArray.filter((data) => {
+  //       const num = parseInt(data[1])
+  //       if (!isNaN(num)) {
+  //         return data
+  //       }
+  //     })
 
-  const arrayWithNumbers = arrayOfArrays.map(
-    (arrayInArray: dirtyDataArrayType) => {
-      const filteredArray = arrayInArray.filter((data) => {
-        const num = parseInt(data[1]);
-        if (!isNaN(num)) {
-          return data;
-        }
-      });
+  //     const convertedArray: formattedDataArayType = filteredArray.map(
+  //       (data: dirtyDataType) => [data[0], parseInt(data[1])]
+  //     )
 
-      const convertedArray: formattedDataArayType = filteredArray.map(
-        (data: dirtyDataType) => [data[0], parseInt(data[1])]
-      );
-
-      return convertedArray;
-    }
-  );
+  //     return convertedArray
+  //   }
+  // )
 
   useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        "https://opendata.rdw.nl/resource/9c54-cmfx.json"
-      );
+    ;(async () => {
+      const res = await fetch('https://opendata.rdw.nl/resource/r3rs-ibz5.json')
 
-      const json = await res.json();
+      const json = await res.json()
 
-      setData(data.concat(json));
-      console.log(json);
-    })();
-  }, []);
+      console.log(getPaymentMethods(json))
+
+      setData(data.concat(json))
+      // console.log(json)
+    })()
+  }, [])
 
   return (
     <div>
       <Layout>
         <h1>Page one</h1>
-        {data && data.map((item: any) => <p>{item.areadesc}</p>)}
-        <Hello />
+        <Hello title="DataViz is cool" />
       </Layout>
     </div>
-  );
-};
+  )
 
-export default PageOne;
+  function getPaymentMethods(json: AreaType[]): Set<string> {
+    const array = json.map((item: AreaType) => {
+      return item.paymentmethod.toUpperCase()
+    })
+
+    return new Set(array)
+  }
+}
+
+export default PageOne

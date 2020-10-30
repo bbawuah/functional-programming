@@ -1,16 +1,12 @@
-import React, { Fragment, FunctionComponent } from "react";
+/* eslint-disable react/prop-types */
+import React, { Fragment } from 'react'
 
-import { Container } from "@material-ui/core";
+import { Container } from '@material-ui/core'
 
-import Header from "./Header";
-import Footer from "./Footer";
-
-const Layout: FunctionComponent = (props) => (
+const Layout: React.FC = ({ children }) => (
   <Fragment>
-    <Header />
-    <Container>{props.children}</Container>
-    <Footer />
+    <Container>{children}</Container>
   </Fragment>
-);
+)
 
-export default Layout;
+export default Layout
